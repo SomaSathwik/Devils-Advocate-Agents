@@ -208,9 +208,41 @@ The `.gitignore` is configured to ignore common local environment files such as:
 
 This repository is a working prototype for adversarial proposal analysis. It is designed to be used interactively from the terminal, but it can be expanded into a more robust product or service layer.
 
+## Roadmap
+
+The project is intentionally modular, so it can evolve in a few clear directions:
+
+### Phase 1: MVP refinement
+
+- improve critique consistency across personas
+- add better structured prompts for higher-quality attack outputs
+- add stronger scoring and ranking logic
+- reduce hallucinated or weak criticisms by improving evaluation constraints
+
+### Phase 2: Productization
+
+- add a web UI or dashboard for inputting proposals and viewing results
+- expose the critique engine via a REST API
+- add report generation for teams and executive reviews
+- add proposal history and saved sessions
+
+### Phase 3: Memory and learning
+
+- persist user proposals and prior verdicts
+- add long-term memory for repeated ideas or strategic planning
+- improve recall across past critiques and similarity matching
+- provide recommendation patterns derived from historical decisions
+
+### Phase 4: Decision intelligence
+
+- compare multiple proposals side-by-side
+- include weighted scoring by team context, risk appetite, and market conditions
+- add investment, product, or operational fit scoring
+- support scenario analysis for multiple strategic bets
+
 ## License
 
-This project does not currently include a license file. If you plan to distribute or collaborate publicly, you may want to add an open-source license such as MIT or Apache-2.0.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for the full terms.
 
 ## Contributing
 
