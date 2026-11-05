@@ -28,6 +28,53 @@ This is useful for:
 - proposal critique before execution
 - investor-readiness checklists
 
+## Features
+
+- Multi-agent adversarial review with five critique personas
+- Severity-based ranking of objections and risks
+- Final verdict synthesis with survivability scoring
+- Structured counter-condition generation for proposal survival
+- Rich terminal output for quick human review
+- Modular graph-based orchestration for easy extension
+- Works well for product, strategy, and startup idea evaluation
+- Designed for fast experimentation without a heavy web stack
+
+## Demo
+
+Below is a representative command-line flow from the project:
+
+```text
+$ python main.py
+
+Welcome to Devil's Advocate Agent
+Powered by Claude + Qdrant
+
+Submit any idea, plan, or proposal — 5 AI critics will attack it.
+
+Enter your proposal (or 'quit' to exit):
+> We should replace our support team with a fully autonomous AI agent.
+
+⚔️ Unleashing 5 critics...
+
+[🔴 Pessimist] Severity: 8/10
+• The model may hallucinate critical customer issues.
+• Human trust will collapse if the bot misroutes urgent support cases.
+
+[⚖️ Lawyer] Severity: 7/10
+• Liability exposure increases without a clear escalation path.
+
+[🏴‍☠️ Competitor] Severity: 9/10
+• A stronger incumbent already solves this workflow at lower cost.
+
+[👤 User Voice] Severity: 6/10
+• Customers want faster answers, not a black-box automation layer.
+
+[📊 Data Skeptic] Severity: 9/10
+• No baseline proof or measurable impact data exists.
+
+final verdict: The idea may be viable only after a controlled pilot, real customer validation, and strict fallback guarantees.
+```
+
 ## Why this project exists
 
 Many decision systems focus on optimism and forward momentum. This project takes the opposite approach: it is intentionally adversarial. It simulates the kind of criticism a founder, team lead, or product manager would want to hear before building something expensive or risky.
@@ -65,6 +112,26 @@ The workflow is built from a `StateGraph` that executes the following stages:
 - `END`
 
 This creates a structured pipeline where all persona critiques converge into a final score and recommendation.
+
+### Architecture diagram
+
+```mermaid
+flowchart LR
+    A[User Proposal] --> B[Proposal Analyzer]
+    B --> C[Pessimist]
+    B --> D[Lawyer]
+    B --> E[Competitor]
+    B --> F[User Voice]
+    B --> G[Data Skeptic]
+    C --> H[Attack Aggregator]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    H --> I[Chief Devil's Advocate]
+    I --> J[Final Verdict + Survivability Score]
+    J --> K[Human Decision]
+```
 
 ## Tech stack
 
